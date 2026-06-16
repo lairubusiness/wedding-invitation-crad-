@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>සුතාරා & කසුන් - Wedding Invitation</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dqjmxkvlf/image/upload/v1781590989/ions_eswvu8.png">
+<link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dqjmxkvlf/image/upload/v1781590989/ions_eswvu8.png">
+<link rel="apple-touch-icon" href="https://res.cloudinary.com/dqjmxkvlf/image/upload/v1781590989/ions_eswvu8.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Sans+Sinhala:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#B8860B;--gold-light:#D4AF37;--cream:#FDFAF5;
+  --sage:#7A8C6E;--deep:#2C2415;--warm:#FFFEF9;
+}
+body{font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+.si{font-family:'Noto Sans Sinhala',sans-serif;}
+.sc{font-family:'Great Vibes',cursive;}
+
+/* ── Animations ── */
+@keyframes petal-fall{
+  0%{transform:translateY(-5vh) translateX(0) rotate(0deg);opacity:0}
+  10%{opacity:.8}
+  90%{opacity:.5}
+  100%{transform:translateY(105vh) translateX(80px) rotate(540deg);opacity:0}
+}
+@keyframes shimmer{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(4deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-3deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(212,175,55,.3),0 0 40px rgba(212,175,55,.1)}50%{box-shadow:0 0 40px rgba(212,175,55,.7),0 0 80px rgba(212,175,55,.2)}}
+@keyframes card-in{0%{transform:rotateY(-90deg) scale(.85);opacity:0}65%{transform:rotateY(6deg) scale(1.02)}100%{transform:rotateY(0) scale(1);opacity:1}}
+@keyframes rise{0%{transform:translateY(60px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes flap-open{0%{transform:perspective(600px) rotateX(0deg)}100%{transform:perspective(600px) rotateX(-165deg)}}
+@keyframes card-rise{0%{transform:translateY(0)}100%{transform:translateY(-90px)}}
+@keyframes star-twinkle{0%,100%{opacity:.1}50%{opacity:.6}}
+
+.float{animation:float 7s ease-in-out infinite;}
+.float2{animation:float2 9s ease-in-out infinite;}
+.shimmer{animation:shimmer 3s ease-in-out infinite;}
+.glow{animation:glow 3s ease-in-out infinite;}
+.card-in{animation:card-in 1.2s cubic-bezier(.34,1.56,.64,1) forwards;}
+.rise{animation:rise .8s ease-out forwards;}
+
+/* ── Gold text ── */
+.gold-text{
+  background:linear-gradient(135deg,#B8860B 0%,#D4AF37 40%,#F0C040 60%,#B8860B 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── ENVELOPE SCENE ── */
+#scene{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#1a1208 0%,#2C2415 50%,#1a1208 100%);
+}
+.intro{text-align:center;margin-bottom:60px;z-index:20;}
+.intro-line1{font-size:clamp(2.5rem,6vw,4rem);line-height:1.2;margin-bottom:4px;}
+.intro-line2{font-size:clamp(1.8rem,4vw,2.8rem);color:#D4AF37;opacity:.8;}
+
+/* Envelope */
+#envelope-wrap{position:relative;cursor:pointer;z-index:20;text-align:center;}
+#env{position:relative;width:320px;height:220px;margin:0 auto;}
+.env-body{
+  position:absolute;inset:0;border-radius:12px;overflow:hidden;
+  background:linear-gradient(135deg,#F0E6C8 0%,#E8D5A3 50%,#DCC87A 100%);
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(212,175,55,.3);
+}
+.env-bottom{
+  position:absolute;bottom:0;left:0;right:0;height:55%;overflow:hidden;
+}
+.env-bottom-tri{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#DCC87A,#C8B870);
+  clip-path:polygon(0% 100%,50% 0%,100% 100%);
+}
+.env-left{
+  position:absolute;top:0;left:0;right:50%;bottom:0;
+  background:linear-gradient(135deg,#E8D5A3,#D4C07A);
+  clip-path:polygon(0% 0%,0% 100%,100% 50%);
+}
+.env-right{
+  position:absolute;top:0;left:50%;right:0;bottom:0;
+  background:linear-gradient(225deg,#E8D5A3,#D4C07A);
+  clip-path:polygon(100% 0%,0% 50%,100% 100%);
+}
+.env-seal{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);z-index:10;
+  width:64px;height:64px;border-radius:50%;
+  background:radial-gradient(circle,#D4AF37 0%,#B8860B 100%);
+  box-shadow:0 0 20px rgba(212,175,55,.6);
+  display:flex;align-items:center;justify-content:center;
+}
+.env-flap{
+  position:absolute;top:0;left:0;right:0;height:52%;
+  transform-origin:top center;
+  overflow:hidden;z-index:20;
+  transition:transform .7s cubic-bezier(.4,0,.2,1);
+}
+.env-flap-tri{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#E8D5A3 0%,#DCC87A 100%);
+  clip-path:polygon(0% 0%,50% 100%,100% 0%);
+}
+#env.opening .env-flap{transform:perspective(600px) rotateX(-165deg);}
+.env-mini-card{
+  position:absolute;left:12px;right:12px;border-radius:8px;overflow:hidden;
+  bottom:30%;height:100px;z-index:30;
+  background:linear-gradient(135deg,#FDFAF5,#F5EDD8);
+  transition:transform .8s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 -10px 40px rgba(0,0,0,.3);
+  border:1px solid rgba(212,175,55,.4);
+  display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:4px;
+}
+#env.opening .env-mini-card{display:flex;}
+#env.risen .env-mini-card{transform:translateY(-85px);}
+
+.cta-btn{
+  margin-top:28px;
+  display:inline-block;
+  padding:12px 40px;border-radius:999px;
+  background:linear-gradient(135deg,#B8860B,#D4AF37);
+  color:#2C2415;
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:transform .3s;
+}
+.cta-btn:hover{transform:scale(1.05);}
+.cta-hint{font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.1em;color:#7A8C6E;margin-top:10px;}
+
+/* Stars */
+.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.star{position:absolute;border-radius:50%;background:#D4AF37;animation:star-twinkle 3s ease-in-out infinite;}
+
+/* Petals */
+.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5;}
+.petal{position:absolute;animation:petal-fall linear infinite;border-radius:50%;}
+
+/* ── INVITATION CARD ── */
+#card-scene{
+  display:none;min-height:100vh;
+  align-items:center;justify-content:center;
+  padding:48px 16px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#1a1208 0%,#2C2415 50%,#1a1208 100%);
+}
+#card-scene.show{display:flex;}
+.card{
+  position:relative;max-width:600px;width:100%;
+  border-radius:20px;overflow:hidden;
+  background:linear-gradient(160deg,#FFFEF9 0%,#FDFAF5 40%,#F8F2E4 100%);
+  border:2px solid rgba(212,175,55,.3);
+  box-shadow:0 25px 80px rgba(0,0,0,.5),0 5px 20px rgba(0,0,0,.3),inset 0 0 60px rgba(240,230,200,.05);
+}
+.inner-border{
+  position:absolute;inset:12px;border-radius:12px;
+  border:1px solid rgba(184,134,11,.2);pointer-events:none;z-index:0;
+}
+.card-content{position:relative;z-index:20;padding:48px 32px 220px;text-align:center;}
+
+/* Corner leaves */
+.corner-leaves{position:absolute;width:160px;height:160px;z-index:10;}
+.corner-leaves.tl{top:0;left:0;}
+.corner-leaves.tr{top:0;right:0;transform:scaleX(-1);}
+
+/* Bottom leaves */
+.bottom-leaves{position:absolute;bottom:0;left:0;right:0;pointer-events:none;overflow:hidden;height:200px;z-index:1;}
+
+/* Divider */
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0;padding:0 32px;}
+.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);opacity:.6;}
+.div-star{width:40px;height:20px;flex-shrink:0;}
+
+/* Title */
+.title-sub{font-size:1.5rem;color:#7A8C6E;letter-spacing:.15em;margin-bottom:4px;}
+.title-main{font-size:clamp(2.2rem,7vw,3.5rem);font-weight:700;color:#8B5A00;line-height:1.2;}
+.title-en{font-size:2rem;color:#B8860B;margin-top:4px;}
+
+/* Names */
+.family-text{font-size:.9rem;color:#5C4A2A;line-height:2;}
+.name-si{font-size:clamp(2rem,6vw,3rem);font-weight:700;color:#8B5A00;margin-top:6px;}
+.name-en{font-size:2rem;}
+
+/* And separator */
+.and-sep{display:flex;align-items:center;gap:16px;margin:12px 0;}
+.and-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);}
+.and-sym{font-size:3.5rem;color:#B8860B;}
+
+/* Couple SVG */
+.couple-ring{
+  width:220px;height:220px;margin:24px auto;
+  position:relative;
+}
+.couple-ring::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:url('https://res.cloudinary.com/dqjmxkvlf/image/upload/v1781590578/wedding_images_j4znl1.png') center/cover no-repeat;
+  border:2px solid rgba(212,175,55,.3);
+  animation:shimmer 4s ease-in-out infinite;
+}
+
+/* Invitation text */
+.inv-box{
+  background:rgba(184,134,11,.08);
+  border:1px solid rgba(184,134,11,.15);
+  border-radius:12px;padding:12px 24px;margin:12px 16px;
+}
+
+/* Details grid */
+.details{display:grid;grid-template-columns:1fr 1fr 1fr;margin:20px 16px 12px;border:1px solid rgba(184,134,11,.2);border-radius:12px;overflow:hidden;}
+.detail-cell{padding:16px 8px;text-align:center;}
+.detail-cell:not(:last-child){border-right:1px solid rgba(184,134,11,.2);}
+.det-icon{width:24px;height:24px;margin:0 auto 6px;}
+.det-label{font-size:.85rem;font-weight:600;color:#8B5A00;}
+.det-sub{font-size:.75rem;color:#7A8C6E;}
+.det-num{font-size:3rem;font-weight:700;line-height:1;margin:4px 0;}
+
+/* Footer */
+.card-footer{margin-top:16px;}
+.footer-names{font-size:2rem;}
+.footer-note{font-size:.75rem;color:#7A8C6E;letter-spacing:.2em;margin-top:6px;}
+
+/* Close button */
+.close-btn{
+  position:fixed;top:20px;right:20px;z-index:999;
+  display:none;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:999px;
+  background:linear-gradient(135deg,#2C2415,#3a2f1a);
+  border:1px solid rgba(212,175,55,.5);
+  color:#D4AF37;
+  font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.15em;
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,.4),0 0 12px rgba(212,175,55,.15);
+  transition:transform .25s,box-shadow .25s;
+}
+.close-btn:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(0,0,0,.5),0 0 20px rgba(212,175,55,.3);}
+.close-btn svg{flex-shrink:0;}
+#card-scene.show ~ .close-btn,
+.close-btn.visible{display:flex;}
+
+/* Ambient glow bg */
+.glow-bg{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:500px;height:500px;border-radius:50%;opacity:.1;pointer-events:none;
+  background:radial-gradient(circle,#D4AF37 0%,transparent 70%);filter:blur(40px);
+}
+
+@media(max-width:500px){
+  #env{width:280px;height:190px;}
+  .card-content{padding:36px 20px 200px;}
+  .detail-cell{padding:12px 4px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════ ENVELOPE SCENE ══ -->
+<div id="scene">
+  <div class="stars" id="stars"></div>
+  <div class="petals" id="petals"></div>
+  <div class="glow-bg"></div>
+
+  <div class="intro rise" style="opacity:0;animation-delay:.3s;animation-fill-mode:forwards;z-index:20;">
+    <div class="intro-line1 sc gold-text">You are cordially</div>
+    <div class="intro-line2 sc">invited to celebrate</div>
+  </div>
+
+  <div id="envelope-wrap">
+    <div id="env">
+      <div class="env-body">
+        <div class="env-bottom"><div class="env-bottom-tri"></div></div>
+        <div class="env-left"></div>
+        <div class="env-right"></div>
+        <div class="env-seal shimmer">
+          <span class="sc" style="font-size:1.4rem;color:#2C2415;">S&amp;K</span>
+        </div>
+        <div class="env-flap"><div class="env-flap-tri"></div></div>
+        <div class="env-mini-card">
+          <p class="si" style="font-size:.75rem;color:#7A8C6E;">ශ්‍රී සුභ මංගලම්</p>
+          <p class="sc gold-text" style="font-size:1.5rem;">Suthara &amp; Kasun</p>
+          <p class="si" style="font-size:.75rem;color:#B8860B;">2025 මැයි 14</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="cta-area">
+      <button class="cta-btn glow" onclick="openEnvelope()">Open Invitation</button>
+      <p class="cta-hint shimmer">Click to reveal your invitation</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ INVITATION CARD ══ -->
+<div id="card-scene">
+  <div class="stars" id="card-stars"></div>
+  <div class="petals" id="card-petals"></div>
+  <div class="glow-bg"></div>
+
+  <div class="card card-in">
+    <div class="inner-border"></div>
+
+    <!-- Corner leaves TL -->
+    <div class="corner-leaves tl float">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#7A8C6E" stroke-width="1.2">
+          <path d="M10,10 Q40,20 30,60 Q20,40 10,10Z" fill="#A8B89A" opacity=".5"/>
+          <path d="M20,5 Q60,30 45,75 Q30,50 20,5Z" fill="#8FA881" opacity=".45"/>
+          <path d="M5,25 Q35,55 15,90 Q5,65 5,25Z" fill="#7A8C6E" opacity=".4"/>
+          <path d="M35,2 Q70,35 55,85 Q42,60 35,2Z" fill="#B8C9AA" opacity=".35"/>
+          <line x1="10" y1="10" x2="30" y2="60" stroke="#5C7A5C" stroke-width=".8"/>
+          <line x1="20" y1="5" x2="45" y2="75" stroke="#5C7A5C" stroke-width=".8"/>
+          <circle cx="70" cy="25" r="3" fill="#D4AF37" opacity=".7"/>
+          <circle cx="85" cy="15" r="2" fill="#E8D5A3" opacity=".6"/>
+          <circle cx="95" cy="35" r="2.5" fill="#D4AF37" opacity=".5"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Corner leaves TR -->
+    <div class="corner-leaves tr float2">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#7A8C6E" stroke-width="1.2">
+          <path d="M10,10 Q40,20 30,60 Q20,40 10,10Z" fill="#A8B89A" opacity=".5"/>
+          <path d="M20,5 Q60,30 45,75 Q30,50 20,5Z" fill="#8FA881" opacity=".45"/>
+          <path d="M5,25 Q35,55 15,90 Q5,65 5,25Z" fill="#7A8C6E" opacity=".4"/>
+          <path d="M35,2 Q70,35 55,85 Q42,60 35,2Z" fill="#B8C9AA" opacity=".35"/>
+          <circle cx="70" cy="25" r="3" fill="#D4AF37" opacity=".7"/>
+          <circle cx="85" cy="15" r="2" fill="#E8D5A3" opacity=".6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Bottom leaves -->
+    <div class="bottom-leaves">
+      <svg viewBox="0 0 600 200" class="w-full h-full opacity-40" style="width:100%;height:100%;opacity:.45;">
+        <g fill="#7A8C6E">
+          <path d="M0,200 Q80,110 180,155 Q100,150 0,200Z" opacity=".5"/>
+          <path d="M0,200 Q120,90 220,140 Q140,145 0,200Z" opacity=".35"/>
+          <path d="M600,200 Q520,110 420,155 Q500,150 600,200Z" opacity=".5"/>
+          <path d="M600,200 Q480,90 380,140 Q460,145 600,200Z" opacity=".35"/>
+          <path d="M0,200 Q220,170 300,185 Q200,188 0,200Z" fill="#A8B89A" opacity=".3"/>
+          <path d="M600,200 Q380,170 300,185 Q400,188 600,200Z" fill="#A8B89A" opacity=".3"/>
+        </g>
+        <g fill="#D4AF37" opacity=".4">
+          <circle cx="60" cy="172" r="4"/>
+          <circle cx="95" cy="156" r="3"/>
+          <circle cx="540" cy="172" r="4"/>
+          <circle cx="505" cy="156" r="3"/>
+          <circle cx="300" cy="165" r="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Card Content -->
+    <div class="card-content">
+
+      <!-- Title -->
+      <p class="si title-sub">ශ්‍රී</p>
+      <h1 class="si title-main">සුභ මංගලම්</h1>
+      <p class="sc title-en" style="color:#B8860B;">Sri Subha Mangalam</p>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="div-line"></div>
+        <svg class="div-star" viewBox="0 0 40 20">
+          <path d="M20,2 L22,8 L28,8 L23,12 L25,18 L20,14 L15,18 L17,12 L12,8 L18,8Z" fill="#D4AF37" opacity=".8"/>
+        </svg>
+        <div class="div-line"></div>
+      </div>
+
+      <!-- Bride's family -->
+      <p class="si family-text">ජේ. එච්. ලාල් ඉන්ද්‍රරත්න මහත්මා</p>
+      <p class="si family-text">සහ එම මෑණියගේ ආදරණීය දියණිය</p>
+      <h2 class="si name-si">සුතාරා</h2>
+      <p class="sc name-en gold-text">Suthara</p>
+
+      <!-- And -->
+      <div class="and-sep">
+        <div class="and-line"></div>
+        <span class="sc and-sym">&amp;</span>
+        <div class="and-line"></div>
+      </div>
+
+      <!-- Groom's family -->
+      <p class="si family-text">ඩබ්ලිව්. ජනක ප්‍රසන්න මහත්මා</p>
+      <p class="si family-text">සහ එම මෑණියගේ ආදරණීය පුත්</p>
+      <h2 class="si name-si">කසුන්</h2>
+      <p class="sc name-en gold-text">Kasun</p>
+
+      <!-- Couple illustration -->
+      <div class="couple-ring">
+        <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <!-- Groom -->
+          <ellipse cx="75" cy="148" rx="22" ry="50" fill="#1a2744"/>
+          <ellipse cx="75" cy="148" rx="17" ry="44" fill="#263460"/>
+          <!-- Groom batik top -->
+          <ellipse cx="75" cy="120" rx="19" ry="24" fill="#1a2744"/>
+          <circle cx="75" cy="115" r="8" fill="#3a5090" opacity=".6"/>
+          <circle cx="68" cy="122" r="6" fill="#3a5090" opacity=".5"/>
+          <!-- Groom head -->
+          <circle cx="75" cy="72" r="22" fill="#c8956c"/>
+          <!-- Headdress/Crown -->
+          <path d="M53,65 Q75,48 97,65 Q90,54 75,50 Q60,54 53,65Z" fill="#2C2415"/>
+          <rect x="70" y="48" width="10" height="14" rx="3" fill="#B8860B"/>
+          <circle cx="75" cy="47" r="5" fill="#D4AF37"/>
+          <!-- Beard -->
+          <path d="M60,90 Q75,102 90,90 Q84,95 75,96 Q66,95 60,90Z" fill="#3a2510"/>
+          <!-- Eyes -->
+          <circle cx="67" cy="72" r="3.5" fill="#2C2415"/>
+          <circle cx="83" cy="72" r="3.5" fill="#2C2415"/>
+          <circle cx="68" cy="71" r="1.2" fill="white"/>
+          <circle cx="84" cy="71" r="1.2" fill="white"/>
+          <!-- Smile -->
+          <path d="M66,84 Q75,92 84,84" stroke="#8B4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Groom arm -->
+          <path d="M94,128 Q115,138 128,148" stroke="#c8956c" stroke-width="9" stroke-linecap="round" fill="none"/>
+
+          <!-- Bride -->
+          <ellipse cx="148" cy="152" rx="20" ry="44" fill="#f5f0e0"/>
+          <!-- Dress detail -->
+          <path d="M128,150 Q148,168 168,150 Q164,175 148,190 Q132,175 128,150Z" fill="#f0ead0"/>
+          <!-- Bride blouse -->
+          <ellipse cx="148" cy="124" rx="18" ry="22" fill="#f8f4e8"/>
+          <!-- Bride head -->
+          <circle cx="148" cy="76" r="20" fill="#c8956c"/>
+          <!-- Hair -->
+          <path d="M128,70 Q148,55 168,70 Q162,60 148,56 Q134,60 128,70Z" fill="#2C2415"/>
+          <circle cx="148" cy="56" r="10" fill="#3a2510"/>
+          <!-- Hair ornaments -->
+          <circle cx="148" cy="48" r="5" fill="#D4AF37"/>
+          <circle cx="158" cy="50" r="3.5" fill="#B8860B"/>
+          <circle cx="138" cy="51" r="3" fill="#D4AF37" opacity=".8"/>
+          <!-- Bride eyes -->
+          <circle cx="140" cy="76" r="3" fill="#2C2415"/>
+          <circle cx="156" cy="76" r="3" fill="#2C2415"/>
+          <circle cx="141" cy="75" r="1" fill="white"/>
+          <circle cx="157" cy="75" r="1" fill="white"/>
+          <!-- Lashes -->
+          <path d="M137,73 L139,70" stroke="#2C2415" stroke-width="1"/>
+          <path d="M141,72 L140,69" stroke="#2C2415" stroke-width="1"/>
+          <path d="M153,72 L152,69" stroke="#2C2415" stroke-width="1"/>
+          <path d="M157,73 L159,70" stroke="#2C2415" stroke-width="1"/>
+          <!-- Bride mouth -->
+          <path d="M142,88 Q148,94 154,88" stroke="#c0504a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Earrings -->
+          <circle cx="128" cy="80" r="3.5" fill="#D4AF37"/>
+          <circle cx="128" cy="87" r="2.5" fill="#B8860B"/>
+          <!-- Bouquet -->
+          <circle cx="136" cy="138" r="12" fill="#D4AF37" opacity=".25"/>
+          <circle cx="132" cy="134" r="7" fill="#f9c0c0"/>
+          <circle cx="141" cy="132" r="7" fill="#f9d5e5"/>
+          <circle cx="136" cy="142" r="7" fill="#f4b8c0"/>
+          <circle cx="133" cy="136" r="3" fill="#D4AF37" opacity=".6"/>
+          <circle cx="140" cy="133" r="3" fill="#D4AF37" opacity=".6"/>
+          <path d="M136,150 L136,162" stroke="#5C7A5C" stroke-width="2"/>
+          <path d="M136,158 Q130,155 127,160" stroke="#5C7A5C" stroke-width="1.5" fill="none"/>
+
+          <!-- Sparkles -->
+          <g fill="#D4AF37" class="shimmer">
+            <path d="M25,45 L26,49 L30,50 L26,51 L25,55 L24,51 L20,50 L24,49Z" opacity=".7"/>
+            <path d="M195,35 L196,39 L200,40 L196,41 L195,45 L194,41 L190,40 L194,39Z" opacity=".6"/>
+            <path d="M20,175 L21,178 L24,179 L21,180 L20,183 L19,180 L16,179 L19,178Z" opacity=".7"/>
+            <path d="M198,168 L199,171 L202,172 L199,173 L198,176 L197,173 L194,172 L197,171Z" opacity=".6"/>
+            <path d="M110,12 L111,15 L114,16 L111,17 L110,20 L109,17 L106,16 L109,15Z" opacity=".8"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="div-line"></div>
+        <svg class="div-star" viewBox="0 0 40 20">
+          <path d="M20,2 L22,8 L28,8 L23,12 L25,18 L20,14 L15,18 L17,12 L12,8 L18,8Z" fill="#D4AF37" opacity=".8"/>
+        </svg>
+        <div class="div-line"></div>
+      </div>
+
+      <!-- Invitation text -->
+      <p class="si" style="font-size:.9rem;color:#7A8C6E;">සමඟ</p>
+      <p class="si family-text" style="margin:6px 0;">අතිනත ගැනීමේ ප්‍රීතිය නිමිත්තෙන්</p>
+
+      <div class="inv-box">
+        <p class="si family-text">ඔබට / ඔබ දෙපළට / ඔබ සැමට</p>
+        <p class="si family-text">කෙරෙන සුහද ආරාධනාවයි වේ.</p>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="div-line"></div>
+        <svg class="div-star" viewBox="0 0 40 20">
+          <path d="M20,2 L22,8 L28,8 L23,12 L25,18 L20,14 L15,18 L17,12 L12,8 L18,8Z" fill="#D4AF37" opacity=".8"/>
+        </svg>
+        <div class="div-line"></div>
+      </div>
+
+      <!-- Details -->
+      <div class="details">
+        <!-- Time -->
+        <div class="detail-cell">
+          <svg class="det-icon" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+          <p class="si det-label">පෙ.ව 11.00</p>
+          <p class="si det-sub">සිට</p>
+          <p class="si det-label">ප.ව 4.00</p>
+          <p class="si det-sub">දක්වා</p>
+        </div>
+        <!-- Date -->
+        <div class="detail-cell">
+          <p class="si det-sub">2025</p>
+          <p class="si det-label">මැයි මස</p>
+          <p class="det-num gold-text" style="font-family:'Cormorant Garamond',serif;">14</p>
+          <p class="si det-sub">වන දිත</p>
+        </div>
+        <!-- Venue -->
+        <div class="detail-cell">
+          <svg class="det-icon" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <p class="si det-label">අප නිවසේදී...</p>
+          <p style="font-size:.75rem;color:#7A8C6E;font-style:italic;margin-top:4px;">Our Home</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer">
+        <div class="divider">
+          <div class="div-line"></div>
+          <svg class="div-star" viewBox="0 0 40 20">
+            <path d="M20,2 L22,8 L28,8 L23,12 L25,18 L20,14 L15,18 L17,12 L12,8 L18,8Z" fill="#D4AF37" opacity=".8"/>
+          </svg>
+          <div class="div-line"></div>
+        </div>
+        <p class="sc footer-names gold-text">Suthara &amp; Kasun</p>
+        <p class="si footer-note">ශ්‍රී සුභ මංගලම් ✦ 2025 මැයි 14</p>
+      </div>
+
+    </div><!-- end card-content -->
+  </div><!-- end card -->
+</div><!-- end card-scene -->
+
+<!-- Close / re-seal button -->
+<button class="close-btn" id="close-btn" onclick="closeEnvelope()">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round">
+    <path d="M3 8l9-5 9 5v10l-9 5-9-5V8z"/>
+    <path d="M12 3v14M3 8l9 5 9-5"/>
+  </svg>
+  Close Envelope
+</button>
+
+<script>
+// ── Stars ────────────────────────────────────────────────────────────────────
+function makeStars(containerId, count) {
+  const c = document.getElementById(containerId);
+  if (!c) return;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.8;
+    s.style.cssText = `
+      width:${size}px;height:${size}px;
+      top:${Math.random()*100}%;left:${Math.random()*100}%;
+      opacity:${Math.random()*0.4+0.1};
+      animation-duration:${Math.random()*3+2}s;
+      animation-delay:${Math.random()*4}s;
+    `;
+    c.appendChild(s);
+  }
+}
+
+// ── Petals ───────────────────────────────────────────────────────────────────
+function makePetals(containerId, count) {
+  const c = document.getElementById(containerId);
+  if (!c) return;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = Math.random() * 10 + 7;
+    const hue = Math.random() > 0.5 ? '#D4AF37' : '#A8B89A';
+    const rx = Math.random() > 0.5 ? '50% 30%' : '30% 50%';
+    p.style.cssText = `
+      left:${Math.random()*100}%;top:-20px;
+      width:${size}px;height:${size*0.55}px;
+      background:${hue};border-radius:${rx};
+      animation-duration:${Math.random()*8+9}s;
+      animation-delay:${Math.random()*12}s;
+    `;
+    c.appendChild(p);
+  }
+}
+
+makeStars('stars', 35);
+makePetals('petals', 15);
+makeStars('card-stars', 40);
+makePetals('card-petals', 18);
+
+// ── Envelope open ────────────────────────────────────────────────────────────
+function openEnvelope() {
+  const env = document.getElementById('env');
+  const cta = document.getElementById('cta-area');
+  if (env.classList.contains('opening')) return;
+
+  cta.style.display = 'none';
+  env.classList.add('opening');
+
+  setTimeout(() => env.classList.add('risen'), 750);
+
+  setTimeout(() => {
+    document.getElementById('scene').style.display = 'none';
+    const cs = document.getElementById('card-scene');
+    cs.classList.add('show');
+    document.getElementById('close-btn').classList.add('visible');
+  }, 1800);
+}
+
+// ── Envelope close (re-seal) ──────────────────────────────────────────────────
+function closeEnvelope() {
+  const cs = document.getElementById('card-scene');
+  const env = document.getElementById('env');
+  const cta = document.getElementById('cta-area');
+  const btn = document.getElementById('close-btn');
+
+  // hide close button & card
+  btn.classList.remove('visible');
+  cs.classList.remove('show');
+
+  // show envelope scene
+  const scene = document.getElementById('scene');
+  scene.style.display = '';
+
+  // step 1: lower the mini-card back into envelope
+  env.classList.remove('risen');
+
+  // step 2: close the flap
+  setTimeout(() => env.classList.remove('opening'), 500);
+
+  // step 3: show CTA button again
+  setTimeout(() => { cta.style.display = ''; }, 1000);
+}
+</script>
+</body>
+</html>
